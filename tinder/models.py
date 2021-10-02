@@ -32,3 +32,6 @@ class Activity(CreateTracker):
 class LikedActivity(CreateTracker):
     activity = models.ForeignKey(Activity, on_delete=models.PROTECT)
     employee = models.ForeignKey(Employee, on_delete=models.PROTECT)
+
+    def __str__(self):
+        f"{self.employee_id} liked {self.activity_id}"

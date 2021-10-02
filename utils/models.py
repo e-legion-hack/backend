@@ -21,7 +21,7 @@ class CreateTracker(models.Model):
             cls,
             instance_id: Optional[Union[str, int, uuid.uuid4]] = None,
             **kwargs
-    ) -> Tuple[Optional['cls'], Optional[Dict[str, str]]]:
+    ) -> Tuple[Optional['cls'], Optional[str]]:
         """
         returns instance, None if there is an objects with given id.
         Or None, dict with error's text
@@ -32,7 +32,7 @@ class CreateTracker(models.Model):
             else:
                 instance = cls.objects.get(**kwargs)
         except cls.DoesNotExist:
-            return None, {"error": f"{cls.__name__} object with id={instance_id} doesn't exist."}
+            return None, f"{cls.__name__} object with id={instance_id} doesn't exist."
         else:
             return instance, None
 

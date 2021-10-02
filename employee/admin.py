@@ -6,6 +6,6 @@ from employee.models import Employee
 
 @admin.register(Employee)
 class AdminEmployee(admin.ModelAdmin):
-    list_display = ('status', 'job_title', 'is_remote')
+    list_display = ('first_name', 'last_name', 'status', 'job_title', 'is_remote')
     list_filter = ('status', 'is_remote', 'is_teamlead', 'is_head_of_departament', 'office', 'departament')
-    search_fields = ('status', 'job_title', 'telegram', 'instagram', 'vkontakte', 'about')
+    search_fields = ('first_name', 'last_name', 'status', 'job_title', 'telegram', 'instagram', 'vkontakte', 'about')
