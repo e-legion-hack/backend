@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'employee',
     'office',
     'job',
+    'tinder',
 ]
 
 MIDDLEWARE = [
