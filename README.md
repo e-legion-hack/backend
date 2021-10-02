@@ -2,11 +2,11 @@
 
 ## How to run
 
-The fastest way to run the bot is to run it in pooling mode using SQLite database without all Celery workers for background jobs. This should be enough for quickstart:
+The fastest way to run is to run it using SQLite database without all Celery workers for background jobs. This should be enough for quickstart:
 
 ``` bash
-git clone https://github.com/ohld/django-telegram-bot
-cd django-telegram-bot
+git clone https://github.com/e-legion-hack/e-legion-backend.git
+cd e-legion-backend
 ```
 
 Create virtual environment (optional)
@@ -24,7 +24,6 @@ Create `.env` file in root directory and copy-paste this:
 ``` bash 
 DJANGO_DEBUG=True
 DATABASE_URL=sqlite:///db.sqlite3
-TELEGRAM_TOKEN=<ENTER YOUR TELEGRAM TOKEN HERE>
 ```
 
 Run migrations to setup SQLite database:
@@ -37,16 +36,7 @@ Create superuser to get access to admin panel:
 python manage.py createsuperuser
 ```
 
-Run bot in pooling mode:
-``` bash
-python run_pooling.py 
-```
-
-If you want to open Django admin panel which will be located on http://localhost:8000/tgadmin/:
+If you want to open Django admin panel which will be located on http://localhost:8000/legionadmin/:
 ``` bash
 python manage.py runserver
 ```
-
-## Run locally using docker-compose
-
-If you like docker-compose you can check [full instructions in our Wiki](https://github.com/ohld/django-telegram-bot/wiki/Run-locally-using-Docker-compose).
