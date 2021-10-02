@@ -30,6 +30,15 @@ class EmployeeStatus(Enum):
     on_time_off = 'в отгуле'
 
 
+class RomeStatus(Enum):
+    tubicen = 'Тубицен'  # стажер
+    evocatus = 'Эвокат'  # junior
+    duplicarius = 'Дупликарий'  # middle
+    praefectus_castrorum = 'Префект лагеря'  # руководитель группы
+    laticlavius = 'Латиклавий'  # руководитель проектов
+    legatus = 'Легат'  # CEO
+
+
 class TaskStatus(Enum):
     created = 'создана'
     in_progress = 'в исполнении'

@@ -30,3 +30,6 @@ class Departament(CreateTracker):
         abstract = False
         verbose_name = 'отдел'
         verbose_name_plural = 'отделы'
+
+    def __str__(self):
+        return f"{self.name}"

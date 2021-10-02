@@ -17,8 +17,8 @@ class Task(CreateUpdateTracker):
 
     title = models.CharField(verbose_name='Заголовок', max_length=64)
 
-    creator = models.ForeignKey(Employee, verbose_name='создатель', on_delete=models.PROTECT)
-    executors = models.ManyToManyField(Employee, verbose_name='исполнители')
+    creator = models.ForeignKey(Employee, verbose_name='создатель', on_delete=models.PROTECT, related_name='creator')
+    executors = models.ManyToManyField(Employee, verbose_name='исполнители', related_name='executors')
 
     commentary = models.TextField(verbose_name='подробное описание', **nb)
 

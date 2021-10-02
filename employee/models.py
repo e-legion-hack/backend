@@ -3,20 +3,29 @@ from django.db import models
 
 # Create your models here.
 from office.models import Office, Departament
-from utils.enums import EmployeeStatus
+from utils.enums import EmployeeStatus, RomeStatus
 from utils.models import CreateUpdateTracker, nb
 
 
-class Employee(CreateUpdateTracker, AbstractUser):
+class Employee(CreateUpdateTracker):
+    first_name = models.CharField(max_length=32)
+    last_name = models.CharField(max_length=32)
+
     status = models.CharField(
         verbose_name='статус сотрудника',
         max_length=16,
         choices=tuple([(status.name, status.value) for status in EmployeeStatus])
     )
+    rome_status = models.CharField(
+        verbose_name='римский статус',
+        max_length=20,
+        choices=tuple([(status.name, status.value) for status in RomeStatus]),
+        default=RomeStatus.tubicen.name,
+    )
+
     job_title = models.CharField(
         verbose_name='должность',
         max_length=16,
-
     )
 
     manager = models.ForeignKey('self', on_delete=models.SET_NULL, verbose_name='Начальник', related_name='sub', **nb)
@@ -44,3 +53,6 @@ class Employee(CreateUpdateTracker, AbstractUser):
         abstract = False
         verbose_name = 'сотрудник'
         verbose_name_plural = 'сотрудники'
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}: {self.job_title}"
