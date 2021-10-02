@@ -35,3 +35,11 @@ class TaskStatus(Enum):
     in_progress = 'в исполнении'
     canceled = 'отменена'
     executed = 'выполнена'
+
+
+class ActivityType(Enum):
+    lunch = 'обед'
+    sport = 'спорт'
+    party = 'вечеринка'
+    board_games = 'настольные игры'
+    nature = 'природа'

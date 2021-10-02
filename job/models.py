@@ -30,3 +30,12 @@ class Project(CreateUpdateTracker):
     name = models.CharField(
         verbose_name='название проекта', max_length=64, help_text='Например, "разработка приложения для Burger King".'
     )
+
+    tasks = models.ManyToManyField(Task, verbose_name='задачи')
+
+    start_at = models.DateTimeField()
+    end_at = models.DateTimeField()
+
+    status = models.CharField(
+        verbose_name='статус', max_length=16, choices=tuple([(status.name, status.value) for status in TaskStatus])
+    )
