@@ -25,7 +25,7 @@ class Employee(CreateUpdateTracker):
 
     job_title = models.CharField(
         verbose_name='должность',
-        max_length=16,
+        max_length=64,
     )
 
     manager = models.ForeignKey('self', on_delete=models.SET_NULL, verbose_name='Начальник', related_name='sub', **nb)
