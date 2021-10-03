@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from employee.models import Employee
-from employee.serializers import EmployeeSerializer
+from employee.serializers import EmployeeSerializer, SubEmployeeSerializer
 from job.models import Task, Project
 from utils.serializers import SerializerSaver
 
@@ -13,8 +13,8 @@ class BaseTaskSerializer(serializers.ModelSerializer):
 
 
 class ReadTaskSerializer(BaseTaskSerializer):
-    creator = EmployeeSerializer()
-    executors = EmployeeSerializer(many=True)
+    creator = SubEmployeeSerializer()
+    executors = SubEmployeeSerializer(many=True)
 
 
 class CreateTaskSerializer(BaseTaskSerializer, SerializerSaver):

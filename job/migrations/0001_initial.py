@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
                 ('start_at', models.DateTimeField()),
                 ('end_at', models.DateTimeField()),
                 ('status', models.CharField(choices=[('created', 'создана'), ('in_progress', 'в исполнении'), ('canceled', 'отменена'), ('executed', 'выполнена')], max_length=16, verbose_name='статус')),
-                ('tasks', models.ManyToManyField(to='job.Task', verbose_name='задачи')),
+                ('tasks', models.ManyToManyField(to='tasks.Task', verbose_name='задачи')),
             ],
             options={
                 'ordering': ('-created_at',),
