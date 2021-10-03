@@ -5,7 +5,7 @@ from tinder.models import Activity, LikedActivity
 from utils.serializers import SerializerSaver
 
 
-class BaseActivitySerializer(serializers.ModelSerializer):
+class BaseActivitySerializer(serializers.ModelSerializer, SerializerSaver):
     creator = serializers.PrimaryKeyRelatedField(queryset=Employee.objects.all())
 
     class Meta:

@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from api.employee.utils import get_activities_for_employee
 from employee.models import Employee
 from employee.serializers import EmployeeSerializer
+from tinder.models import Activity
 from utils.api import CustomJsonResponse
 
 
@@ -27,4 +28,16 @@ class EmployeeTinderAPIView(APIView):
                 'other': other_employee_activities,
             },
             errors=None,
+        )
+
+
+class DeleteActivityAPIView(APIView):
+    def post(self, request: Request, employee_id: int, activity_id, *args, **kwargs):
+        res = Activity.objects.filter(creator_id=employee_id, id=activity_id).delete()
+
+        return CustomJsonResponse(
+            data={
+                'res': f"Deleted {res} rows"
+            },
+            errors=None
         )
