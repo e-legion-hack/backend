@@ -39,3 +39,7 @@ class LikedActivity(CreateTracker):
     def __str__(self):
         return f"{self.id}: {self.employee_id} liked {self.activity_id}"
 
+    class Meta(CreateTracker.Meta):
+        abstract = False
+        verbose_name = 'понравившаяся активность'
+        verbose_name_plural = 'понравившиеся активности'

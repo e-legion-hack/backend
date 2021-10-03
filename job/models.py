@@ -24,6 +24,11 @@ class Task(CreateUpdateTracker):
 
     finished_at = models.DateTimeField(verbose_name='время окончания', **nb)
 
+    class Meta(CreateUpdateTracker.Meta):
+        abstract = False
+        verbose_name = 'задача'
+        verbose_name_plural = 'задачи'
+
 
 class Project(CreateUpdateTracker):
     """Big project. It might be contained from a lot of tasks"""
@@ -39,3 +44,8 @@ class Project(CreateUpdateTracker):
     status = models.CharField(
         verbose_name='статус', max_length=16, choices=tuple([(status.name, status.value) for status in TaskStatus])
     )
+
+    class Meta(CreateUpdateTracker.Meta):
+        abstract = False
+        verbose_name = 'проект'
+        verbose_name_plural = 'проекты'
