@@ -41,6 +41,8 @@ class Employee(CreateUpdateTracker):
     telegram = models.CharField(max_length=64, **nb)
     instagram = models.CharField(max_length=64, **nb)
     vkontakte = models.CharField(max_length=64, **nb)
+    phone_number = models.PositiveBigIntegerField(default=89661215210)
+    email = models.EmailField(default='test@gmail.com')
     about = models.TextField(verbose_name='о себе', **nb)
     photo_url = models.URLField(verbose_name='ссылка на фото', max_length=1024, **nb)
 

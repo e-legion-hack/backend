@@ -22,7 +22,12 @@ class SubEmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
         fields = (
-            'first_name', 'last_name', 'job_title', 'telegram', 'photo_url', 'status', 'job_title', 'rome_status'
+            'first_name',
+            'last_name',
+            'job_title',
+            'phone_number',
+            'email',
+            'telegram', 'photo_url', 'status', 'job_title', 'rome_status'
         )
 
 

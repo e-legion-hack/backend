@@ -11,11 +11,15 @@ class LikeActivityAPIView(APIView):
         data = request.data
         activity = data.get('activity')
         employee = data.get('employee')
-
-        activity_liked, errors = ActivityLikedSerializer.save_data(data)
+        if not all((activity, employee)):
+            data = {}
+            errors = f"Activity and employee are required."
+        else:
+            activity_liked, errors = ActivityLikedSerializer.save_data(data)
+            data = ActivityLikedSerializer(activity_liked).data
 
         return CustomJsonResponse(
-            data=ActivityLikedSerializer(activity_liked).data,
+            data=data,
             errors=errors,
             success_code=status.HTTP_201_CREATED,
             error_code=status.HTTP_400_BAD_REQUEST,
