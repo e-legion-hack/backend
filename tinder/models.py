@@ -37,5 +37,5 @@ class LikedActivity(CreateTracker):
     employee = models.ForeignKey(Employee, on_delete=models.PROTECT)
 
     def __str__(self):
-        f"{self.id}: {self.employee_id} liked {self.activity_id}"
+        return f"{self.id}: {self.employee_id} liked {self.activity_id}"
 
