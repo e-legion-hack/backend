@@ -23,6 +23,9 @@ class Activity(CreateTracker):
 
     dttm = models.DateTimeField(verbose_name='время мероприятия')
 
+    def __str__(self):
+        return f"{self.id}: {self.name}, {self.category}, {self.place}"
+
     class Meta(CreateTracker.Meta):
         abstract = False
         verbose_name = 'активность'
@@ -34,5 +37,5 @@ class LikedActivity(CreateTracker):
     employee = models.ForeignKey(Employee, on_delete=models.PROTECT)
 
     def __str__(self):
-        f"{self.employee_id} liked {self.activity_id}"
+        f"{self.id}: {self.employee_id} liked {self.activity_id}"
 
